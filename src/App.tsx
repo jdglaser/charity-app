@@ -4,6 +4,7 @@ import './App.css'
 import { create } from './api'
 
 async function handleClick(name: string) {
+  console.log("CREATING: ", name)
   await create({name});
 }
 
@@ -14,7 +15,7 @@ function App() {
     <div className="App">
       <label>Name: </label>
       <input type="text" value={name} onChange={(evt) => setName(evt.target.value)}></input>
-      <button onClick={() => handleClick(name)}>Submit</button>
+      <button onClick={async () => await handleClick(name)}>Submit</button>
     </div>
   )
 }
